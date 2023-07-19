@@ -1,6 +1,6 @@
 # Project folders
-archive/
-artifacts/
+archive/*
+artifacts/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
