@@ -1,0 +1,7 @@
+airtifacts_root: artifacts
+
+data_model:
+  root_dir: artifacts/chest_xray
+  test_dir: artifacts/chest_xray/test
+  train_dir: artifacts/chest_xray/train
+  val_dir: artifacts/val
