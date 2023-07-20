@@ -1,1 +1,8 @@
-key: val
+AUGMENTATION: True
+IMAGE_SIZE: [224,224,3] # FOR VGG 16 MODEL
+BATCH_SIZE: 16
+INCLUDE_TOP: False
+EPOCHS: 1
+CLASSES: 2 # Because I have 2 target classes health and sick
+WEIGHTS: imagenet
+LEARNING_RATE: 0.01
