@@ -4,7 +4,6 @@ from cnnClassifier.components.prepare_base_model import PrepareBaseModel
 from cnnClassifier import logger
 
 
-
 STAGE_NAME = 'PREPARE BASE MODEL'
 
 class PrepareBaseModelTrainigPipeline:
