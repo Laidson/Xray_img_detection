@@ -3,7 +3,7 @@ import time
 import tensorflow as tf
 import urllib.request as request
 
-from cnnClassifier.config.configurations import PrepareCallBacksConfig
+from cnnClassifier.entity.config_entity import PrepareCallBacksConfig
 
 '''
     This class will be used on TRAIN part
@@ -32,6 +32,6 @@ class PrepareCallBack:
     
     def get_tb_ckpt_callbacks(self):
         return [
-            self._create_ckpt_callbacks,
+            self._create_tb_callbacks,
             self._create_ckpt_callbacks,
         ]

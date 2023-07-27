@@ -1,4 +1,4 @@
-AUGMENTATION: True
+AUGMENTATION: False # if need to split teh data
 IMAGE_SIZE: [224,224,3] # FOR VGG 16 MODEL
 BATCH_SIZE: 16
 INCLUDE_TOP: False

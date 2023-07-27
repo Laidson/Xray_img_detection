@@ -1,10 +1,10 @@
 artifacts_root: artifacts
 
-data_model:
+data_ingestion:
   root_dir: artifacts/chest_xray
   test_dir: artifacts/chest_xray/test
   train_dir: artifacts/chest_xray/train
-  val_dir: artifacts/val
+  val_dir: artifacts/chest_xray/val
 
 prepare_base_model:
   root_dir: artifacts/prepare_base_model
@@ -15,3 +15,7 @@ prepare_callbacks:
   root_dir: artifacts/prepare_callbacks
   tensorboard_root_log_dir: artifacts/prepare_callbacks/tensorboard_log_dir
   checkpoint_model_filepath: artifacts/prepare_callbacks/checkpoint_dir/model.h5 
+
+training:
+  root_dir: artifacts/training
+  trained_model_path: artifacts/training/model.h5
