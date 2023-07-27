@@ -40,7 +40,8 @@ class Training:
         """Create the tranin and test data split if is not done before"""
 
         datagenerator_kwargs = dict(rescale = 1./225, 
-                                    validation_split = 0.20)
+                                    #validation_split = 0.20
+                                    )
 
         dataflow_kwargs = dict(target_size = self.config.params_image_size[:-1],
                                batch_size = self.config.params_batch_size,

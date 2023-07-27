@@ -2,6 +2,7 @@ from cnnClassifier import logger
 from cnnClassifier.pipeline.stage_01_data_ingestion import DataIngestionTrainigPipeline
 from cnnClassifier.pipeline.stage_02_prepare_base_model import PrepareBaseModelTrainigPipeline
 from cnnClassifier.pipeline.stage_03_training import ModelTrainingPipeline
+from cnnClassifier.pipeline.stage_04_evaluation import EvaluationPipeline
 
 import subprocess
 
@@ -37,6 +38,18 @@ try:
     logger.info(15 * '*')
     logger.info(f'>>>>>>>> stage {STAGE_NAME} started <<<<<<<<')
     obj = ModelTrainingPipeline()
+    obj.main()
+    logger.info(f'>>>>>>>> stage {STAGE_NAME} completed <<<<<<<<\n\nx===========x')
+except Exception as e:
+    logger.info(f'ERROR >>> {e}')
+    raise e
+
+# STEP 04 
+STAGE_NAME = 'EVALUATION STAGE'
+try:
+    logger.info(15 * '*')
+    logger.info(f'>>>>>>>> stage {STAGE_NAME} started <<<<<<<<')
+    obj = EvaluationPipeline()
     obj.main()
     logger.info(f'>>>>>>>> stage {STAGE_NAME} completed <<<<<<<<\n\nx===========x')
 except Exception as e:
