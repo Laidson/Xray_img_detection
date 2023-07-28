@@ -8,7 +8,8 @@ from cnnClassifier.utils.common import read_yaml, create_directories
 from cnnClassifier.entity.config_entity import (PrepareBaseModelConfig, 
                                                 PrepareCallBacksConfig,
                                                 TrainingConfig,
-                                                EvaluationConfig,)
+                                                EvaluationConfig,
+                                                PredictConfig)
 
 
 class ConfigurationManager:
@@ -86,3 +87,12 @@ class ConfigurationManager:
             params_batch_size = self.params.BATCH_SIZE,
                        )
         return eval_config
+    
+    def get_predict_config(self) -> PredictConfig:
+        config = self.config
+        predict_config = PredictConfig(
+            path_of_model = config.training.trained_model_path,
+            params_image_size = self.params.IMAGE_SIZE,
+            params_batch_size = self.params.BATCH_SIZE,
+        )
+        return predict_config
