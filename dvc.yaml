@@ -1,0 +1,65 @@
+stages:
+  data_ingestion:
+    cmd: python src/cnnClassifier/pipeline/stage_01_data_ingestion.py
+    deps:
+      - src/cnnClassifier/pipeline/stage_01_data_ingestion.py
+      - config/config.yaml
+    # outs:
+    #  - shoudl be the folder to save the images
+  
+  prepare_base_model:
+    cmd: python src/cnnClassifier/pipeline/stage_02_prepare_base_model.py
+    deps:
+      - src/cnnClassifier/pipeline/stage_02_prepare_base_model.py
+      - config/config.yaml
+    params:
+      - AUGMENTATION
+      - IMAGE_SIZE
+      - BATCH_SIZE
+      - INCLUDE_TOP
+      - EPOCHS
+      - CLASSES
+      - WEIGHTS
+      - LEARNING_RATE
+    outs:
+      - artifacts/prepare_base_model
+  
+  training:
+    cmd: python src/cnnClassifier/pipeline/stage_03_training.py
+    deps:
+      - src/cnnClassifier/pipeline/stage_03_training.py
+      - src/cnnClassifier/components/prepare_callbacks.py
+      - config/config.yaml
+      - artifacts/chest_xray
+      - artifacts/prepare_base_model
+    params:
+      - AUGMENTATION
+      - IMAGE_SIZE
+      - BATCH_SIZE
+      - INCLUDE_TOP
+      - EPOCHS
+      - CLASSES
+      - WEIGHTS
+      - LEARNING_RATE
+    outs:
+      - artifacts\training\model.h5
+  
+  evaluation:
+    cmd: python src/cnnClassifier/pipeline/stage_04_evaluation.py
+    deps:
+      - src/cnnClassifier/pipeline/stage_04_evaluation.py
+      - config/config.yaml
+      - artifacts/chest_xray
+      - artifacts\training\model.h5
+    params:
+      - AUGMENTATION
+      - IMAGE_SIZE
+      - BATCH_SIZE
+      - INCLUDE_TOP
+      - EPOCHS
+      - CLASSES
+      - WEIGHTS
+      - LEARNING_RATE
+    metrics:
+    - scores.json:
+        cache: False
