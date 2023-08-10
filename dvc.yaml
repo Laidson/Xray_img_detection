@@ -63,3 +63,8 @@ stages:
     metrics:
     - scores.json:
         cache: False
+  
+  production:
+    cmd: python src/cnnClassifier/pipeline/stage_05_get_model_in_prod.py
+    deps:
+      - src/cnnClassifier/pipeline/stage_05_get_model_in_prod.py

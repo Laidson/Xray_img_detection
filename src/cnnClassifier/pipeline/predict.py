@@ -22,7 +22,7 @@ class PredictionPipeline:
         print(model.predict(test_image))
         print(result)
 
-        if result[0] == 0:
+        if result[0] == 0: 
             prediction = 'HEALTH'
             return [{'image': prediction}]
         else:

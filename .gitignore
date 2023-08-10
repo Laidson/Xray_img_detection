@@ -1,6 +1,10 @@
 # Project folders
 archive/*
-artifacts/*
+artifacts/chest_xray/*
+artifacts/evaluation/*
+artifacts/prepare_base_model/*
+artifacts/prepare_callbacks/*
+artifacts/training/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

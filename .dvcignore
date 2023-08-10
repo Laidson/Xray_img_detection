@@ -1,3 +1,10 @@
 # Add patterns of files dvc should ignore, which could improve
 # the performance. Learn more at
 # https://dvc.org/doc/user-guide/dvcignore
+# Project folders
+archive/*
+artifacts/chest_xray/*
+artifacts/evaluation/*
+artifacts/prepare_base_model/*
+artifacts/prepare_callbacks/*
+artifacts/training/*

@@ -9,7 +9,8 @@ from cnnClassifier.entity.config_entity import (PrepareBaseModelConfig,
                                                 PrepareCallBacksConfig,
                                                 TrainingConfig,
                                                 EvaluationConfig,
-                                                PredictConfig)
+                                                PredictConfig,
+                                                ModelProdConfig,)
 
 
 class ConfigurationManager:
@@ -81,7 +82,7 @@ class ConfigurationManager:
         eval_config = EvaluationConfig(
             path_of_model = config.training.trained_model_path,
             training_data = config.data_ingestion.train_dir,
-            validation_data = config.data_ingestion.val_dir,
+            validation_data = config.data_ingestion.test_dir,
             all_params = self.params,
             params_image_size = self.params.IMAGE_SIZE,
             params_batch_size = self.params.BATCH_SIZE,
@@ -96,3 +97,13 @@ class ConfigurationManager:
             params_batch_size = self.params.BATCH_SIZE,
         )
         return predict_config
+    
+    def get_production_model(self) -> ModelProdConfig:
+        config = self.config.production        
+        create_directories([config.root_dir])
+
+        prod_model = ModelProdConfig(
+            path_to_model = config.root_dir,
+            prod_model_path = config.prod_model_path,
+        )
+        return prod_model
